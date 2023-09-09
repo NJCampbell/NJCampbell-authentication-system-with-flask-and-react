@@ -22,3 +22,14 @@ def create_token():
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+# Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
+@api.route("/hello", methods=["GET"])
+@jwt_required()
+def get_hello():
+    msg = {"message": "Hello from the backend!"}
+    return jsonify(msg)
+    # Access the identity of the current user with get_jwt_identity
+    # current_user = get_jwt_identity()
+    # return jsonify(logged_in_as=current_user), 200
