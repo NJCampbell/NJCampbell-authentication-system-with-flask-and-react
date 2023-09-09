@@ -11,16 +11,16 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         actions.login(email, password)
-            .then(() => {
-                navigate("/");
-            })
+        // .then(() => {
+        //     navigate("/");
+        // })
     };
 
 
     return (
         <>
             <div className="container">
-                {(store.token && store.token !== "" && store.token !== undefined) ? "You are logged in with token" + store.token
+                {(store.token && store.token !== "" && store.token !== undefined) ? "You are logged in with token"
                     :
                     <div align="center">
                         <h1>Hello Login!</h1>

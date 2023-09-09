@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch("https://turbo-umbrella-r47r557gg5xhw7v9-3001.app.github.dev/api/token", options)
 					if (response.status !== 200) {
-						alert("Error!  Respone Code: ", response.status)
+						alert("Error!  Response Code: ", response.status)
 						return false;
 					}
 					const data = await response.json()
@@ -62,19 +62,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: async () => {
 				sessionStorage.removeItem("token");
+				console.log("You are logged out");
 				setStore({ token: null });
 			},
 
 			syncSessionToken: () => {
-				// const data = response.json()
-				// sessionStorage.getItem("token", data.access_token);
-				// setStore({ token: data.access_token })
 				const token = sessionStorage.getItem("token");
 				if (token && token !== "" && token !== undefined) {
 					setStore({ token: token })
 				}
 			},
-
 
 			getMessage: async () => {
 				const store = getStore();
