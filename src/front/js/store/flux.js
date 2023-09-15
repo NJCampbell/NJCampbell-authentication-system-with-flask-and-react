@@ -82,15 +82,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				try {
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello", options)
+					const resp = await fetch(process.env.BACKEND_URL + "api/hello", options)
 					const data = await resp.json()
 					setStore({ message: data.message })
+
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
+
+			getUserAdded: async (email, password) => {
+
+				const options = {
+					method: 'POST',
+					headers: {
+						"Content-Type": "application/json",
+						'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+					},
+					body: JSON.stringify(
+						{
+							email: email,
+							password: password,
+
+						}
+					)
+				}
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "signup", options)
+					if (response.status !== 200) {
+						alert("Error!  Response Code: ", response.status)
+						return false;
+					}
+					const data = await response.json()
+					console.log("from backend", data)
+					sessionStorage.setItem("token", data.access_token);
+					setStore({ token: data.access_token })
+					return true;
+				}
+				catch (error) {
+					console.log("login error!")
+				}
+			},
+
+
 		},
 		changeColor: (index, color) => {
 			//get the store
