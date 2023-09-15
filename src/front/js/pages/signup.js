@@ -9,7 +9,7 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState();
     const navigate = useNavigate()
-    function submitRequest() {        
+    function submitRequest() {
         actions.getUserAdded(email, password)
     }
 
@@ -18,7 +18,7 @@ const Signup = () => {
             setError(store.message)
         }
     }, [store.message])
-    
+
     return (
         <div className="text-center mt-5">
             <h1 className="my-3">Welcome! Please Signup</h1>
@@ -44,7 +44,10 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
             </div>
-            <button onClick={submitRequest}>Submit</button>
+            <Link to="/login">
+                <button onClick={submitRequest}>Submit</button>
+            </Link>
+
             {/* disabled={error != null} */}
             <div>
                 {error != null && error}
