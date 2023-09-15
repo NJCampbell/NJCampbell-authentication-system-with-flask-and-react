@@ -11,10 +11,7 @@ const Signup = () => {
     const [error, setError] = useState();
     const navigate = useNavigate()
     function submitRequest() {
-        // const object = {
-        //     email: email,
-        //     password: password
-        // }
+        
         actions.getUserAdded(email, password)
     }
     useEffect(() => {

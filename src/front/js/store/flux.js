@@ -50,14 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				catch (error) {
 					console.log("login error!")
-				}
-				// 	.then(response => {
-				// 		if(response.status == 200) return response.json();
-				// 	})
-				// 	.then(data => {console.log("Access token: ", data);
-				// 		sessionStorage.setItem("token", data.access_token)
-				//  })
-				// 	.catch(error => console.log("There was an error", error))
+				}				
 			},
 
 			logout: async () => {

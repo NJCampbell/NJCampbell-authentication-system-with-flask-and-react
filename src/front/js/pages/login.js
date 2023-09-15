@@ -16,6 +16,7 @@ const Login = () => {
         // })
     };
 
+    // this replaces the .then() above, much cleaner
     if (store.token && store.token !== "" && store.token !== undefined) {
         navigate("/private");
     }
