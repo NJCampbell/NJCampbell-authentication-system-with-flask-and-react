@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (email, password) => {
+
 				const options = {
 					method: 'POST',
 					headers: {
