@@ -26,10 +26,10 @@ export const Home = () => {
 		<Navbar />
 
 	</div> : <div className="text-center mt-5">
-		<button className="btn btn-secondary">
+		<button className="btn btn-secondary mx-3">
 			<Link to="/signup" className="text-white">Signup</Link>
 		</button>
-		<button className="btn btn-secondary">
+		<button className="btn btn-secondary mx-3">
 			<Link to="/login" className="text-white">Login</Link>
 		</button>
 	</div>);
