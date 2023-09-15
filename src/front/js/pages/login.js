@@ -11,11 +11,14 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         actions.login(email, password)
-        .then(() => {
-            navigate("/private");
-        })
+        // .then(() => {
+        //     navigate("/private");
+        // })
     };
 
+    if (store.token && store.token !== "" && store.token !== undefined) {
+        navigate("/private");
+    }
     return (
         <>
             <div className="container">
