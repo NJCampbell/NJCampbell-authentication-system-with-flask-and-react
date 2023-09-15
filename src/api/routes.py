@@ -92,3 +92,7 @@ def delete_user(id):
     db.session.commit()
     return jsonify(user.serialize()), 200       
 
+@api.route('/private', methods=['GET'])
+@jwt_required()
+def get_private():
+    return jsonify({"msg": "This is a private endpoint, you need to be logged in to see it"}), 200
