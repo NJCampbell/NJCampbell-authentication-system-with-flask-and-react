@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,15 +9,16 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState();
     const navigate = useNavigate()
-    function submitRequest() {
-        
+    function submitRequest() {        
         actions.getUserAdded(email, password)
     }
+
     useEffect(() => {
         if (store.message != null && store.message != '') {
             setError(store.message)
         }
     }, [store.message])
+    
     return (
         <div className="text-center mt-5">
             <h1 className="my-3">Welcome! Please Signup</h1>

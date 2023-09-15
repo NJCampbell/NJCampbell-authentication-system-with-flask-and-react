@@ -65,6 +65,20 @@ def create_user():
     db.session.commit()
     return jsonify(user.serialize()), 200
 
+# @api.route("/signup", methods=["POST"])
+# def addUser():
+#     email = request.json.get("email", None)
+#     password = request.json.get("password", None)
+
+#     # Check if the email already exists
+#     existing_user = User.query.filter_by(email=email).first()
+#     if existing_user is None:
+#         new_user_data = User(email= email, password=password, is_active=True)
+#         db.session.add(new_user_data)
+#         db.session.commit()
+#         return jsonify({"msg": "User added successfully!"}), 200
+#     return jsonify({"msg": "email is already exists in the database try login instead?"}), 401
+
 
 
 @api.route('/user/<int:id>', methods=['PUT'])

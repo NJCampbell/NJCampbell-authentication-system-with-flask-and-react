@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				catch (error) {
 					console.log("login error!")
-				}				
+				}
 			},
 
 			logout: async () => {
@@ -87,31 +87,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getUserAdded: async (email, password) => {
-
+				const store = getStore();
 				const options = {
 					method: 'POST',
 					headers: {
 						"Content-Type": "application/json",
-						'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+						// 'Authorization': 'Bearer YOUR_ACCESS_TOKEN' + store.token
 					},
 					body: JSON.stringify(
 						{
 							email: email,
 							password: password,
-
 						}
 					)
 				}
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "signup", options)
+					const response = await fetch(process.env.BACKEND_URL + "api/signup", options)
 					if (response.status !== 200) {
-						alert("Error!  Response Code: ", response.status)
+						alert("Error!  Response Code: this sucks! ", response.status)
 						return false;
 					}
 					const data = await response.json()
 					console.log("from backend", data)
-					sessionStorage.getItem("token", data.access_token);
-					setStore({ token: data.access_token })
+					// setStore({ message: data.msg });
+					// sessionStorage.getItem("token", token);
+					// setStore({ token: token })
 					return true;
 				}
 				catch (error) {
