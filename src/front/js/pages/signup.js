@@ -46,9 +46,7 @@ const Signup = () => {
             </div>
             <Link to="/login">
                 <button onClick={submitRequest}>Submit</button>
-            </Link>
-
-            {/* disabled={error != null} */}
+            </Link>          
             <div>
                 {error != null && error}
                 {error != null && <Link to="/login">Login</Link>}
