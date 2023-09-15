@@ -11,9 +11,9 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         actions.login(email, password)
-        // .then(() => {
-        //     navigate("/");
-        // })
+        .then(() => {
+            navigate("/private");
+        })
     };
 
     return (
